@@ -765,7 +765,7 @@ button:focus-visible {
 
 .pub-item {
   display: grid;
-  grid-template-columns: 146px minmax(0, 1fr);
+  grid-template-columns: minmax(146px, max-content) minmax(0, 1fr);
   gap: 6px 18px;
   padding-block: 11px;
   border-bottom: 1px solid var(--border);
