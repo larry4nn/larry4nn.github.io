@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xiaoyu Li — Researcher, Text Model Evaluation | Meituan LongCat Team</title>
+  <meta name="description" content="Xiaoyu Li is a researcher on the Meituan LongCat Team leading Text Model Evaluation (formerly Multimodal Evaluation). Flagship works include FORTE, AMO-Bench, SOP-Maze, ATLAS, and Q-Eval-100K (CVPR 2025 Oral).">
+  <link rel="canonical" href="https://larry4nn.github.io/">
+
+  <!-- Open Graph / Link Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Xiaoyu Li — Researcher, Text Model Evaluation | Meituan LongCat Team">
+  <meta property="og:description" content="Leading Text Model Evaluation (formerly Multimodal Evaluation) within the Meituan LongCat Evaluation team. FORTE, AMO-Bench, SOP-Maze, ATLAS, and Q-Eval-100K (CVPR 2025 Oral).">
+  <meta property="og:url" content="https://larry4nn.github.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Xiaoyu Li — Meituan LongCat Team">
+  <meta name="twitter:description" content="Researcher leading Text Model Evaluation (formerly Multimodal Evaluation) on Meituan LongCat Team. FORTE, AMO-Bench, SOP-Maze, ATLAS, and Q-Eval-100K (CVPR 2025 Oral).">
+
+  <!-- Inline Editorial Monogram Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FAF9F6' stroke='%231B4965' stroke-width='3'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='500' fill='%231B4965'%3EXL%3C/text%3E%3C/svg%3E">
+
+  <!-- Prevent theme flash before paint -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = saved || (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body id="top">
+
+  <!-- Minimal Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">Xiaoyu Li</a>
+      <div class="nav-wrap">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#highlights">Highlights</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#background">Background</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero / Introduction -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero-eyebrow">
+          <span>Researcher · Text Model Evaluation</span>
+          <span class="sep" aria-hidden="true">/</span>
+          <span>Meituan LongCat Team</span>
+        </p>
+        <h1 class="hero-name">Xiaoyu Li</h1>
+
+        <div class="hero-bio">
+          <p>
+            I am a researcher on the <strong>Meituan LongCat Team</strong>, where I lead the
+            <strong>Text Model Evaluation</strong> track—and previously led <strong>Multimodal Evaluation</strong>—within the Evaluation team.
+          </p>
+          <p>
+            As frontier models rapidly saturate static leaderboards, <em>measurement becomes a first-order bottleneck to capability progress</em>.
+            My work focuses on building contamination-resistant, real-world evaluation frameworks for text foundation models—spanning
+            full-cycle workplace agents (<strong>FORTE</strong>), Olympiad-grade mathematical reasoning (<strong>AMO-Bench</strong>),
+            complex enterprise procedures (<strong>SOP-Maze</strong>), million-token long-context profiling (<strong>ATLAS</strong>),
+            alongside earlier work on large-scale human-aligned text-to-vision evaluation (<strong>Q-Eval-100K</strong>, CVPR 2025 Oral)—while collaborating
+            closely with post-training and reasoning teams to turn diagnostics into stronger models.
+          </p>
+        </div>
+
+        <div class="hero-links" aria-label="Contact and academic profiles">
+          <span class="email-group">
+            <a class="profile-link" href="mailto:larry_lee001@163.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>larry_lee001@163.com</span>
+            </a>
+            <button id="copy-email-btn" class="copy-inline-btn" type="button" data-copy="larry_lee001@163.com" aria-label="Copy email address">Copy</button>
+          </span>
+
+          <span class="link-divider" aria-hidden="true"></span>
+
+          <a class="profile-link" href="https://scholar.google.com/citations?user=4gEafxMAAAAJ" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            <span>Google Scholar</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 01: Flagship Highlights -->
+    <section id="highlights" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-index">01</span>
+            <h2 class="section-title">Selected Highlights</h2>
+          </div>
+          <p class="section-subtitle">Flagship evaluation works across text models, agents, and earlier multimodal research</p>
+        </div>
+
+        <div class="highlights-stack">
+
+          <!-- Highlight 01: FORTE -->
+          <article class="dossier">
+            <div class="dossier-meta">
+              <div class="dossier-badges">
+                <span class="badge badge-benchmark">Open-Source Benchmark · 2026</span>
+                <span class="badge badge-role">Project Lead · Text &amp; Agent Eval</span>
+              </div>
+              <span class="dossier-num">01 / 04</span>
+            </div>
+
+            <h3 class="dossier-title">
+              <a href="https://agi-eval-official.github.io/FORTE/" target="_blank" rel="noopener noreferrer">
+                FORTE: Full-Cycle Office Real-World Task Evaluation
+              </a>
+            </h3>
+
+            <p class="dossier-summary">
+              Existing agent benchmarks rarely reflect end-to-end daily knowledge work across real enterprise artifacts.
+              <strong>FORTE</strong> evaluates autonomous agents in containerized multimodal office workspaces
+              (<code>xlsx</code>, <code>docx</code>, <code>pptx</code>, <code>pdf</code>, <code>csv</code>, images, and source code)
+              across <strong>15 corporate professions</strong>—from Finance, Legal, and Operations to Dev, SRE, and PM.
+              Each task is graded under strict <strong>all-or-nothing expert rubrics</strong>, tracking both capability
+              (<code>Avg@3</code>, <code>Pass@3</code>) and multi-run reliability (<code>Pass^3</code>).
+            </p>
+
+            <div class="dossier-specs" aria-label="FORTE key specifications">
+              <div class="spec-item">
+                <strong>180 tasks</strong>
+                <span class="spec-label">Full-cycle office work</span>
+              </div>
+              <div class="spec-item">
+                <strong>15 professions</strong>
+                <span class="spec-label">Corporate domain coverage</span>
+              </div>
+              <div class="spec-item">
+                <strong>Multimodal</strong>
+                <span class="spec-label">Containerized workspace</span>
+              </div>
+              <div class="spec-item">
+                <strong>Avg@3 · Pass^3</strong>
+                <span class="spec-label">All-or-nothing rubrics</span>
+              </div>
+            </div>
+
+            <div class="action-links">
+              <a class="action-link" href="https://agi-eval-official.github.io/FORTE/" target="_blank" rel="noopener noreferrer">Leaderboard ↗</a>
+              <a class="action-link" href="https://github.com/AGI-Eval-Official/FORTE" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <button class="bibtex-trigger" type="button" aria-expanded="false" aria-controls="bib-hl-forte">BibTeX</button>
+            </div>
+
+            <div id="bib-hl-forte" class="bibtex-drawer">
+              <div class="bibtex-drawer-head">
+                <span class="bibtex-label">BibTeX</span>
+                <button class="copy-inline-btn bibtex-copy-btn" type="button">Copy BibTeX</button>
+              </div>
+              <pre class="bibtex-pre">@misc{longcat2026forte,
+  title        = {{FORTE}: Full-Cycle Office Real-World Task Evaluation for AI Agents Across 15 Corporate Professions},
+  author       = {{LongCat Team}},
+  howpublished = {\url{https://github.com/AGI-Eval-Official/FORTE}},
+  month        = jun,
+  year         = {2026}
+}</pre>
+            </div>
+          </article>
+
+          <!-- Highlight 02: AMO-Bench -->
+          <article class="dossier">
+            <div class="dossier-meta">
+              <div class="dossier-badges">
+                <span class="badge badge-venue">ACL 2026 Findings</span>
+                <span class="badge badge-role">Project Lead · Reasoning Eval</span>
+              </div>
+              <span class="dossier-num">02 / 04</span>
+            </div>
+
+            <h3 class="dossier-title">
+              <a href="https://aclanthology.org/2026.findings-acl.101/" target="_blank" rel="noopener noreferrer">
+                AMO-Bench: Large Language Models Still Struggle in High School Math Competitions
+              </a>
+            </h3>
+
+            <p class="dossier-summary">
+              As public competition suites such as AIME24/25 approach ceiling scores and suffer from data contamination,
+              <strong>AMO-Bench</strong> introduces <strong>50 entirely original</strong>, expert cross-validated mathematical
+              reasoning problems at or above <strong>IMO difficulty</strong>, crafted for deterministic automatic final-answer grading.
+              Evaluating <strong>26 frontier LLMs</strong> shows even the strongest model achieves only <strong>52.4%</strong>
+              (with most scoring below 40%), revealing clear headroom and pronounced test-time compute scaling behavior.
+            </p>
+
+            <div class="dossier-specs" aria-label="AMO-Bench key specifications">
+              <div class="spec-item">
+                <strong>50 problems</strong>
+                <span class="spec-label">Original IMO+ difficulty</span>
+              </div>
+              <div class="spec-item">
+                <strong>Zero leakage</strong>
+                <span class="spec-label">Expert cross-validated</span>
+              </div>
+              <div class="spec-item">
+                <strong>26 LLMs</strong>
+                <span class="spec-label">Frontier models audited</span>
+              </div>
+              <div class="spec-item">
+                <strong>52.4% top</strong>
+                <span class="spec-label">Best model accuracy</span>
+              </div>
+            </div>
+
+            <div class="action-links">
+              <a class="action-link" href="https://aclanthology.org/2026.findings-acl.101/" target="_blank" rel="noopener noreferrer">ACL Anthology ↗</a>
+              <a class="action-link" href="https://arxiv.org/abs/2510.26768" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+              <a class="action-link" href="https://amo-bench.github.io/" target="_blank" rel="noopener noreferrer">Project ↗</a>
+              <a class="action-link" href="https://github.com/meituan-longcat/AMO-Bench" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <button class="bibtex-trigger" type="button" aria-expanded="false" aria-controls="bib-hl-amo">BibTeX</button>
+            </div>
+
+            <div id="bib-hl-amo" class="bibtex-drawer">
+              <div class="bibtex-drawer-head">
+                <span class="bibtex-label">BibTeX</span>
+                <button class="copy-inline-btn bibtex-copy-btn" type="button">Copy BibTeX</button>
+              </div>
+              <pre class="bibtex-pre">@inproceedings{liu-etal-2026-amo,
+  title     = "{AMO}-Bench: Large Language Models Still Struggle in High School Math Competitions",
+  author    = "Liu, Junlin and An, Shengnan and Zhou, Shuang and Ma, Dan and Lin, Yehao and Lv, Xinxuan and Wang, Xuanlin and Li, Xiaoyu and Wang, Ziwen and Cao, Xuezhi and Cai, Xunliang",
+  booktitle = "Findings of the Association for Computational Linguistics: ACL 2026",
+  month     = jul,
+  year      = "2026",
+  pages     = "2120--2137",
+  url       = "https://aclanthology.org/2026.findings-acl.101/"
+}</pre>
+            </div>
+          </article>
+
+          <!-- Highlight 03: SOP-Maze -->
+          <article class="dossier">
+            <div class="dossier-meta">
+              <div class="dossier-badges">
+                <span class="badge badge-venue">ACL 2026 Findings</span>
+                <span class="badge badge-role">Project Lead · Procedural Eval</span>
+              </div>
+              <span class="dossier-num">03 / 04</span>
+            </div>
+
+            <h3 class="dossier-title">
+              <a href="https://aclanthology.org/2026.findings-acl.715/" target="_blank" rel="noopener noreferrer">
+                SOP-Maze: Evaluating Large Language Models on Complicated Business Standard Operating Procedures
+              </a>
+            </h3>
+
+            <p class="dossier-summary">
+              Enterprise deployment demands reliable adherence to dense, branching Standard Operating Procedures (SOPs)
+              rather than isolated single-turn prompts. <strong>SOP-Maze</strong> adapts real-world business workflows into
+              <strong>397 instances</strong> and <strong>3,422 subtasks</strong> across <strong>23 complex SOP scenarios</strong>,
+              structured into wide-option <em>Lateral Root System (LRS)</em> selection and deep-branch <em>Heart Root System (HRS)</em>
+              logical execution—isolating three dominant failure modes: <strong>route blindness</strong>,
+              <strong>conversational fragility</strong>, and <strong>contextual calculation errors</strong>.
+            </p>
+
+            <div class="dossier-specs" aria-label="SOP-Maze key specifications">
+              <div class="spec-item">
+                <strong>397 instances</strong>
+                <span class="spec-label">Real business scenarios</span>
+              </div>
+              <div class="spec-item">
+                <strong>3,422 subtasks</strong>
+                <span class="spec-label">Multi-step procedures</span>
+              </div>
+              <div class="spec-item">
+                <strong>23 workflows</strong>
+                <span class="spec-label">Complex SOP graphs</span>
+              </div>
+              <div class="spec-item">
+                <strong>LRS / HRS</strong>
+                <span class="spec-label">Breadth &amp; depth taxonomy</span>
+              </div>
+            </div>
+
+            <div class="action-links">
+              <a class="action-link" href="https://aclanthology.org/2026.findings-acl.715/" target="_blank" rel="noopener noreferrer">ACL Anthology ↗</a>
+              <a class="action-link" href="https://arxiv.org/abs/2510.08942" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+              <a class="action-link" href="https://github.com/meituan-longcat/SOP-Maze" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <button class="bibtex-trigger" type="button" aria-expanded="false" aria-controls="bib-hl-sop">BibTeX</button>
+            </div>
+
+            <div id="bib-hl-sop" class="bibtex-drawer">
+              <div class="bibtex-drawer-head">
+                <span class="bibtex-label">BibTeX</span>
+                <button class="copy-inline-btn bibtex-copy-btn" type="button">Copy BibTeX</button>
+              </div>
+              <pre class="bibtex-pre">@inproceedings{wang-etal-2026-sop,
+  title     = "{SOP}-Maze: Evaluating Large Language Models on Complicated Business Standard Operating Procedures",
+  author    = "Wang, Jiaming and Tang, Zhe and Jin, Zehao and Chen, Hefei and Jin, Yilin and Ding, Peng and Li, Xiaoyu and Cao, Xuezhi",
+  booktitle = "Findings of the Association for Computational Linguistics: ACL 2026",
+  month     = jul,
+  year      = "2026",
+  pages     = "14568--14588",
+  url       = "https://aclanthology.org/2026.findings-acl.715/"
+}</pre>
+            </div>
+          </article>
+
+          <!-- Highlight 04: Q-Eval-100K (CVPR 2025 Oral) -->
+          <article class="dossier">
+            <div class="dossier-meta">
+              <div class="dossier-badges">
+                <span class="badge badge-venue">CVPR 2025 Oral</span>
+                <span class="badge badge-role">Multimodal Eval Track</span>
+              </div>
+              <span class="dossier-num">04 / 04</span>
+            </div>
+
+            <h3 class="dossier-title">
+              <a href="https://arxiv.org/abs/2503.02357" target="_blank" rel="noopener noreferrer">
+                Q-Eval-100K: Evaluating Visual Quality and Alignment Level for Text-to-Vision Content
+              </a>
+            </h3>
+
+            <p class="dossier-summary">
+              Produced during my tenure leading <strong>Multimodal Evaluation</strong> in collaboration with SJTU,
+              <strong>Q-Eval-100K</strong> builds the largest human-annotated benchmark for generative text-to-image and
+              text-to-video models—<strong>100K instances</strong> (60K images and 40K videos) paired with
+              <strong>960K human Mean Opinion Scores</strong> covering visual quality and prompt alignment.
+              Built on top of this dataset, <strong>Q-Eval-Score</strong> unifies quality and long-prompt alignment scoring
+              in a single LMM evaluator with strong cross-benchmark generalization.
+            </p>
+
+            <div class="dossier-specs" aria-label="Q-Eval-100K key specifications">
+              <div class="spec-item">
+                <strong>100K instances</strong>
+                <span class="spec-label">60K images · 40K videos</span>
+              </div>
+              <div class="spec-item">
+                <strong>960K MOS</strong>
+                <span class="spec-label">Human annotations</span>
+              </div>
+              <div class="spec-item">
+                <strong>2 dimensions</strong>
+                <span class="spec-label">Quality &amp; alignment</span>
+              </div>
+              <div class="spec-item">
+                <strong>Q-Eval-Score</strong>
+                <span class="spec-label">Unified LMM evaluator</span>
+              </div>
+            </div>
+
+            <div class="action-links">
+              <a class="action-link" href="https://arxiv.org/abs/2503.02357" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+              <a class="action-link" href="https://github.com/zzc-1998/Q-Eval" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a class="action-link" href="https://huggingface.co/datasets/meituan-longcat/Q-Eval-100K" target="_blank" rel="noopener noreferrer">Dataset (HF) ↗</a>
+              <a class="action-link" href="https://huggingface.co/AGI-Eval-Official/Q-Eval-Score" target="_blank" rel="noopener noreferrer">Model (HF) ↗</a>
+              <button class="bibtex-trigger" type="button" aria-expanded="false" aria-controls="bib-hl-qeval">BibTeX</button>
+            </div>
+
+            <div id="bib-hl-qeval" class="bibtex-drawer">
+              <div class="bibtex-drawer-head">
+                <span class="bibtex-label">BibTeX</span>
+                <button class="copy-inline-btn bibtex-copy-btn" type="button">Copy BibTeX</button>
+              </div>
+              <pre class="bibtex-pre">@inproceedings{zhang2025qeval100k,
+  title     = {Q-Eval-100K: Evaluating Visual Quality and Alignment Level for Text-to-Vision Content},
+  author    = {Zhang, Zicheng and Kou, Tengchuan and Wang, Shushi and Li, Chunyi and Sun, Wei and Wang, Wei and Li, Xiaoyu and Wang, Zongyu and Cao, Xuezhi and Min, Xiongkuo and Liu, Xiaohong and Zhai, Guangtao},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  note      = {Oral Presentation},
+  year      = {2025}
+}</pre>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Research Agenda -->
+    <section id="research" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-index">02</span>
+            <h2 class="section-title">Research Agenda</h2>
+          </div>
+          <p class="section-subtitle">Diagnostic evaluation spanning text, agents, and multimodal generation</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar">
+            <p class="pillar-num">01 / TEXT &amp; AGENTIC EVAL</p>
+            <h3 class="pillar-title">Real-World, Reasoning &amp; Long Context</h3>
+            <p class="pillar-desc">
+              Leading text foundation model evaluation and designing anti-saturation benchmarks covering full-cycle office
+              workflows, Olympiad-level math, branching business SOPs, and 8K–1M length-dependent scaling curves.
+            </p>
+            <p class="pillar-refs">FORTE · AMO-Bench · SOP-Maze · ATLAS</p>
+          </div>
+
+          <div class="pillar">
+            <p class="pillar-num">02 / MULTIMODAL EVAL</p>
+            <h3 class="pillar-title">Human-Aligned Text-to-Vision</h3>
+            <p class="pillar-desc">
+              Previously led multimodal evaluation for generative image and video models, building large-scale human preference
+              datasets and unified LMM evaluators for visual quality and long-prompt alignment.
+            </p>
+            <p class="pillar-refs">Q-Eval-100K (CVPR '25 Oral) · Q-Eval-Score</p>
+          </div>
+
+          <div class="pillar">
+            <p class="pillar-num">03 / MODEL ITERATION</p>
+            <h3 class="pillar-title">Foundation Model Evaluation</h3>
+            <p class="pillar-desc">
+              Owning text model evaluation across Meituan's open-weights LongCat releases and partnering with pre-training,
+              post-training, and reasoning teams to translate evaluation diagnostics into capability gains.
+            </p>
+            <p class="pillar-refs">LongCat-Flash · Thinking-2601 · Flash-Prover · LongCat-Next</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Compact Publications & Reports Index -->
+    <section id="publications" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-index">03</span>
+            <h2 class="section-title">Publications &amp; Reports</h2>
+          </div>
+          <p class="section-subtitle">Compact index by role</p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Filter publications by role">
+          <button class="filter-tab is-active" type="button" role="tab" aria-selected="true" data-filter="all">
+            All<span class="filter-count">14</span>
+          </button>
+          <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="led">
+            Led Benchmarks<span class="filter-count">5</span>
+          </button>
+          <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="models">
+            Foundation Models<span class="filter-count">4</span>
+          </button>
+          <button class="filter-tab" type="button" role="tab" aria-selected="false" data-filter="coauthored">
+            Co-authored<span class="filter-count">5</span>
+          </button>
+        </div>
+
+        <!-- Group A: Led Benchmarks & Evaluation -->
+        <div class="pub-group" data-group="led">
+          <h3 class="pub-group-title">Led Benchmarks &amp; Evaluation</h3>
+          <ol class="pub-list">
+
+            <li class="pub-item" data-category="led">
+              <div class="pub-aside">
+                <span class="pub-venue pub-venue--bench">Benchmark · Jun 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://agi-eval-official.github.io/FORTE/" target="_blank" rel="noopener noreferrer">FORTE: Full-Cycle Office Real-World Task Evaluation</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://agi-eval-official.github.io/FORTE/" target="_blank" rel="noopener noreferrer">Leaderboard ↗</a>
+                    <a class="action-link" href="https://github.com/AGI-Eval-Official/FORTE" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-note">180 real-world multimodal office tasks across 15 corporate professions with strict rubric grading.</p>
+              </div>
+            </li>
+
+            <li class="pub-item" data-category="led">
+              <div class="pub-aside">
+                <span class="pub-venue">arXiv · May 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2605.28079" target="_blank" rel="noopener noreferrer">ATLAS: All-round Testing of Long-context Abilities across Scales</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2605.28079" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <button class="bibtex-trigger" type="button" aria-expanded="false" aria-controls="bib-atlas">BibTeX</button>
+                  </div>
+                </div>
+                <p class="pub-note">Length-dependent 8K–1M capability profiling across 6,438 instances and 26 models via length-aware AUC and ATLAScore.</p>
+                <div id="bib-atlas" class="bibtex-drawer">
+                  <div class="bibtex-drawer-head">
+                    <span class="bibtex-label">BibTeX</span>
+                    <button class="copy-inline-btn bibtex-copy-btn" type="button">Copy BibTeX</button>
+                  </div>
+                  <pre class="bibtex-pre">@article{huang2026atlas,
+  title   = {ATLAS: All-round Testing of Long-context Abilities across Scales},
+  author  = {Huang, Deli and Wang, Cunguang and Tang, Hongyin and Tang, Zhe and Guo, Linsen and Ru, Dongyu and Yuan, Ruoshi and Zhu, Ziyue and Li, Xiaoyu and Wang, Ziwen and Zhang, Chen and Gui, Anchun and Zan, Wen and Zhang, Jiaqi and Cao, Xuezhi and Wang, Jingang and Cai, Xunliang and Cao, Yixin},
+  journal = {arXiv preprint arXiv:2605.28079},
+  year    = {2026}
+}</pre>
+                </div>
+              </div>
+            </li>
+
+            <li class="pub-item" data-category="led">
+              <div class="pub-aside">
+                <span class="pub-venue pub-venue--accepted">ACL 2026 Findings</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://aclanthology.org/2026.findings-acl.101/" target="_blank" rel="noopener noreferrer">AMO-Bench: Large Language Models Still Struggle in High School Math Competitions</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://aclanthology.org/2026.findings-acl.101/" target="_blank" rel="noopener noreferrer">ACL ↗</a>
+                    <a class="action-link" href="https://arxiv.org/abs/2510.26768" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://amo-bench.github.io/" target="_blank" rel="noopener noreferrer">Project ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/AMO-Bench" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-note">50 original IMO+ math problems with deterministic automatic grading across 26 frontier LLMs.</p>
+              </div>
+            </li>
+
+            <li class="pub-item" data-category="led">
+              <div class="pub-aside">
+                <span class="pub-venue pub-venue--accepted">ACL 2026 Findings</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://aclanthology.org/2026.findings-acl.715/" target="_blank" rel="noopener noreferrer">SOP-Maze: Evaluating Large Language Models on Complicated Business Standard Operating Procedures</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://aclanthology.org/2026.findings-acl.715/" target="_blank" rel="noopener noreferrer">ACL ↗</a>
+                    <a class="action-link" href="https://arxiv.org/abs/2510.08942" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/SOP-Maze" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-note">397 instances and 3,422 subtasks across 23 real business SOPs organized by LRS/HRS failure taxonomy.</p>
+              </div>
+            </li>
+
+            <li class="pub-item" data-category="led">
+              <div class="pub-aside">
+                <span class="pub-venue pub-venue--accepted">CVPR 2025 Oral</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2503.02357" target="_blank" rel="noopener noreferrer">Q-Eval-100K: Evaluating Visual Quality and Alignment Level for Text-to-Vision Content</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2503.02357" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/zzc-1998/Q-Eval" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a class="action-link" href="https://huggingface.co/datasets/meituan-longcat/Q-Eval-100K" target="_blank" rel="noopener noreferrer">Dataset ↗</a>
+                    <a class="action-link" href="https://huggingface.co/AGI-Eval-Official/Q-Eval-Score" target="_blank" rel="noopener noreferrer">Model ↗</a>
+                  </div>
+                </div>
+                <p class="pub-note">100K text-to-image/video instances, 960K human MOS scores, and the unified Q-Eval-Score LMM evaluator.</p>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <!-- Group B: LongCat Foundation Model Technical Reports -->
+        <div class="pub-group" data-group="models">
+          <h3 class="pub-group-title">LongCat Foundation Model Technical Reports</h3>
+          <ol class="pub-list">
+
+            <li class="pub-item pub-item--brief" data-category="models">
+              <div class="pub-aside">
+                <span class="pub-venue">Tech Report · Mar 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2603.27538" target="_blank" rel="noopener noreferrer">LongCat-Next: Lexicalizing Modalities as Discrete Tokens</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2603.27538" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/LongCat-Next" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-brief-meta">Native discrete autoregressive multimodal model (text, vision, audio)</p>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="models">
+              <div class="pub-aside">
+                <span class="pub-venue">Tech Report · Mar 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2603.21065" target="_blank" rel="noopener noreferrer">LongCat-Flash-Prover: Native Formal Reasoning via Agentic Tool-Integrated RL</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2603.21065" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/LongCat-Flash-Prover" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-brief-meta">560B MoE open-weights Lean4 prover (97.1% MiniF2F-Test, 41.5% PutnamBench)</p>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="models">
+              <div class="pub-aside">
+                <span class="pub-venue">Tech Report · Jan 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2601.16725" target="_blank" rel="noopener noreferrer">LongCat-Flash-Thinking-2601 Technical Report</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2601.16725" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/LongCat-Flash-Thinking-2601" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+                <p class="pub-brief-meta">560B MoE agentic reasoning model trained across 10,000+ environments</p>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="models">
+              <div class="pub-aside">
+                <span class="pub-venue">Tech Report · Sep 2025</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2509.01322" target="_blank" rel="noopener noreferrer">LongCat-Flash Technical Report</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2509.01322" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/meituan-longcat/LongCat-Flash-Chat" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a class="action-link" href="https://huggingface.co/meituan-longcat" target="_blank" rel="noopener noreferrer">HF ↗</a>
+                  </div>
+                </div>
+                <p class="pub-brief-meta">560B MoE (27B active) foundation model trained on 20T+ tokens at &gt;100 TPS</p>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <!-- Group C: Co-authored Research -->
+        <div class="pub-group" data-group="coauthored">
+          <h3 class="pub-group-title">Other Co-authored Work</h3>
+          <ol class="pub-list">
+
+            <li class="pub-item pub-item--brief" data-category="coauthored">
+              <div class="pub-aside">
+                <span class="pub-venue">arXiv · Jul 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2607.28037" target="_blank" rel="noopener noreferrer">ClawTrack: Towards Trace-Level Evaluation and Improvement of Real-World Autonomous Agents</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2607.28037" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="coauthored">
+              <div class="pub-aside">
+                <span class="pub-venue">arXiv · Jul 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2607.28026" target="_blank" rel="noopener noreferrer">Contrastive Reinforced Policy Optimization via Privileged Self-Distillation (CRPO)</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2607.28026" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="coauthored">
+              <div class="pub-aside">
+                <span class="pub-venue">arXiv · Jun 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2606.25757" target="_blank" rel="noopener noreferrer">OPERA: Aligning Open-Ended Reasoning via Objective Perplexity-based Reinforcement Learning</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2606.25757" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/pangpang-xuan/OPERA" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="coauthored">
+              <div class="pub-aside">
+                <span class="pub-venue">arXiv · May 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://arxiv.org/abs/2605.07926" target="_blank" rel="noopener noreferrer">AgentEscapeBench: Evaluating Out-of-Domain Tool-Grounded Reasoning in LLM Agents</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://arxiv.org/abs/2605.07926" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="pub-item pub-item--brief" data-category="coauthored">
+              <div class="pub-aside">
+                <span class="pub-venue pub-venue--accepted">EMNLP 2026</span>
+              </div>
+              <div class="pub-body">
+                <div class="pub-row-top">
+                  <h4 class="pub-title">
+                    <a href="https://aclanthology.org/2026.emnlp-main.986/" target="_blank" rel="noopener noreferrer">TR-ICRL: Test-Time Rethinking for In-Context Reinforcement Learning</a>
+                  </h4>
+                  <div class="pub-inline-links">
+                    <a class="action-link" href="https://aclanthology.org/2026.emnlp-main.986/" target="_blank" rel="noopener noreferrer">ACL ↗</a>
+                    <a class="action-link" href="https://arxiv.org/abs/2604.00438" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+                    <a class="action-link" href="https://github.com/pangpang-xuan/TR_ICRL" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <p class="pub-scholar-note">
+          Complete publication list and citations on
+          <a href="https://scholar.google.com/citations?user=4gEafxMAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Section 04: Background -->
+    <section id="background" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-index">04</span>
+            <h2 class="section-title">Background</h2>
+          </div>
+          <p class="section-subtitle">Experience &amp; Education</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-period">Present</div>
+            <div>
+              <h3 class="timeline-role">Researcher · Text Model Evaluation Lead</h3>
+              <p class="timeline-org">Meituan LongCat Team (Evaluation Group · formerly Multimodal Evaluation Lead)</p>
+              <p class="timeline-desc">
+                Leading the text foundation model evaluation track across the LongCat series, directing real-world agent,
+                Olympiad math, enterprise SOP, and long-context benchmarks (FORTE, AMO-Bench, SOP-Maze, ATLAS).
+                Previously led the multimodal evaluation track, producing Q-Eval-100K (CVPR 2025 Oral) and Q-Eval-Score
+                for text-to-image and text-to-video evaluation.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-period">2013 — 2016</div>
+            <div>
+              <h3 class="timeline-role">M.S.</h3>
+              <p class="timeline-org">Beijing University of Posts and Telecommunications (BUPT)</p>
+              <p class="timeline-desc">
+                Graduate studies in Beijing, China.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Editorial Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Xiaoyu Li · <a href="mailto:larry_lee001@163.com">larry_lee001@163.com</a></span>
+      <div class="footer-meta">
+        <span>Updated Nov 2026</span>
+        <a class="footer-top-link" href="#top">Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
