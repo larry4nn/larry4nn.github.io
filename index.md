@@ -51,5 +51,3 @@ Studying tool use, autonomous agents, trace-level behavior, and reliable interac
 ## Links
 
 - [Google Scholar](https://scholar.google.com/citations?user=4gEafxMAAAAJ)
-- [DBLP](https://dblp.org/pid/18/6855-9.html)
-- [GitHub](https://github.com/larry4nn)
